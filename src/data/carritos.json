@@ -1,0 +1,28 @@
+[
+  {
+    "productos": [
+      {
+        "nombre": "Motorola",
+        "descripcion": "E5",
+        "codigo": 12345,
+        "foto": "https://http2.mlstatic.com/D_NQ_NP_888399-MLA30086607095_042019-O.webp",
+        "precio": 25000,
+        "stock": 20,
+        "id": 1,
+        "timestamp": "4/12/2022, 00:49:44"
+      },
+      {
+        "nombre": "Samsung",
+        "descripcion": "A53",
+        "codigo": 12345,
+        "foto": "https://images.samsung.com/is/image/samsung/p6pim/ar/2202/gallery/ar-galaxy-a53-5g-a536-sm-a536elbaaro-531544662?$650_519_PNG$",
+        "precio": 65000,
+        "stock": 30,
+        "id": 2,
+        "timestamp": "4/12/2022, 00:49:44"
+      }
+    ],
+    "id": 1,
+    "timestamp": "4/12/2022, 01:33:49"
+  }
+]
