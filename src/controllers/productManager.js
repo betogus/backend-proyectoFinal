@@ -1,7 +1,7 @@
 const fs = require('fs')
 const pathToFile = './src/data/productos.json'
 class ProductManager {
-    getAll = async () => {
+    async getAll() {
         if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
         let data = await fs.promises.readFile(pathToFile, 'utf-8')
         let products = JSON.parse(data)
@@ -9,7 +9,7 @@ class ProductManager {
         return products
     }
 
-    getById = async (id) => {
+    async getById(id) {
         id = parseInt(id)
         if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
         let data = await fs.promises.readFile(pathToFile, 'utf-8')
@@ -20,7 +20,7 @@ class ProductManager {
         if (!product) return {error: 0, descripcion: "Producto no encontrado"}
         return product  
     }
-    createProduct = async (product) => {
+    async createProduct(product) {
         try { 
             let id = 1;
             let timestamp = new Date().toLocaleString()
@@ -41,7 +41,7 @@ class ProductManager {
             return {error: 0, descripcion: err}
         } 
     }
-    update = async (id, product) => {
+    async update(id, product) {
         let timestamp = new Date().toLocaleString()
         id = parseInt(id)
         if (fs.existsSync(pathToFile)) {
@@ -59,7 +59,7 @@ class ProductManager {
         }
 
     }
-    delete = async (id) => {
+    async delete(id) {
         id = parseInt(id)
         if (fs.existsSync(pathToFile)) {
             let data = await fs.promises.readFile(pathToFile, 'utf-8')

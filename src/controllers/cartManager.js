@@ -1,7 +1,7 @@
 const fs = require('fs')
 const pathToFile = './src/data/carritos.json'
 class CartManager {
-    getById = async (id) => {
+    async getById(id) {
         id = parseInt(id)
         if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
         let data = await fs.promises.readFile(pathToFile, 'utf-8')
@@ -11,7 +11,7 @@ class CartManager {
         if (!cartSearched) return {error: 0, descripcion: "Carrito no encontrado"}
         return cartSearched.productos
     }
-    createCart = async (cart) => {
+    async createCart(cart) {
         try { 
             let id = 1;
             let timestamp = new Date().toLocaleString()
@@ -24,7 +24,7 @@ class CartManager {
                 carts.push(newCart)
                 await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))   
             } else {
-                newCart = {...product, id, timestamp }
+                newCart = {...cart, id, timestamp }
                 await fs.promises.writeFile(pathToFile, JSON.stringify([newCart], null, 2))
             }
             return newCart
@@ -32,7 +32,7 @@ class CartManager {
             return {error: 0, descripcion: err}
         } 
     }
-    update = async (id, product) => {
+    async update(id, product) {
         id = parseInt(id)
         if (fs.existsSync(pathToFile)) {
             let data = await fs.promises.readFile(pathToFile, 'utf-8')
@@ -51,7 +51,7 @@ class CartManager {
         }
 
     }
-    deleteCart = async (id) => {
+    async deleteCart(id) {
         id = parseInt(id)
         if (fs.existsSync(pathToFile)) {
             let data = await fs.promises.readFile(pathToFile, 'utf-8')
@@ -64,7 +64,7 @@ class CartManager {
             return {error: 0, descripcion: 'No existe la BD'}
         }
     }
-    deleteProduct = async(cartId, productId) => {
+    async deleteProduct(cartId, productId) {
         cartId = parseInt(cartId)
         productId = parseInt(productId)
         if (fs.existsSync(pathToFile)) {
